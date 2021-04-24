@@ -5,6 +5,46 @@
  * Make sure to inspect the output below.  Do not ignore changes!
  */
 'use strict'
+exports[`test/lib/ls.js TAP ignore missing optional deps --json > ls --json problems 1`] = `
+Array [
+  "invalid: optional-wrong@3.2.1 {project}/node_modules/optional-wrong",
+  "missing: peer-missing@1, required by test-npm-ls-ignore-missing-optional@1.2.3",
+  "invalid: peer-optional-wrong@3.2.1 {project}/node_modules/peer-optional-wrong",
+  "invalid: peer-wrong@3.2.1 {project}/node_modules/peer-wrong",
+  "missing: prod-missing@1, required by test-npm-ls-ignore-missing-optional@1.2.3",
+  "invalid: prod-wrong@3.2.1 {project}/node_modules/prod-wrong",
+]
+`
+
+exports[`test/lib/ls.js TAP ignore missing optional deps --parseable > ls --parseable result 1`] = `
+{project}
+{project}/node_modules/optional-ok
+{project}/node_modules/optional-wrong
+{project}/node_modules/peer-ok
+{project}/node_modules/peer-optional-ok
+{project}/node_modules/peer-optional-wrong
+{project}/node_modules/peer-wrong
+{project}/node_modules/prod-ok
+{project}/node_modules/prod-wrong
+`
+
+exports[`test/lib/ls.js TAP ignore missing optional deps human output > ls result 1`] = `
+test-npm-ls-ignore-missing-optional@1.2.3 {project}
++-- UNMET OPTIONAL DEPENDENCY optional-missing@1
++-- optional-ok@1.2.3
++-- optional-wrong@3.2.1 invalid
++-- UNMET DEPENDENCY peer-missing@1 deduped
++-- peer-ok@1.2.3
++-- UNMET OPTIONAL DEPENDENCY peer-optional-missing@1 deduped
++-- peer-optional-ok@1.2.3
++-- peer-optional-wrong@3.2.1 invalid
++-- peer-wrong@3.2.1 invalid
++-- UNMET DEPENDENCY prod-missing@1 deduped
++-- prod-ok@1.2.3
+\`-- prod-wrong@3.2.1 invalid
+
+`
+
 exports[`test/lib/ls.js TAP ls --depth=0 > should output tree containing only top-level dependencies 1`] = `
 test-npm-ls@1.0.0 {CWD}/tap-testdir-ls-ls---depth-0
 +-- foo@1.0.0
